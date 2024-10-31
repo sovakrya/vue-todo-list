@@ -6,6 +6,11 @@ const emits = defineEmits<{
 }>()
 
 const todoText = ref('')
+
+function addAndCleanTodoText() {
+  emits('addTodo', todoText.value)
+  todoText.value = ''
+}
 </script>
 
 <template>
@@ -19,9 +24,7 @@ const todoText = ref('')
         v-model="todoText"
         placeholder="Добавьте новую задачу!"
       />
-      <button class="header-btn-add" @click="emits('addTodo', todoText)">
-        +
-      </button>
+      <button class="header-btn-add" @click="addAndCleanTodoText">+</button>
     </div>
   </div>
 </template>
