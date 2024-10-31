@@ -42,5 +42,6 @@ function addNewTodo(todoText: string) {
   flex-direction: column;
   align-items: center;
   padding: 34px;
+  gap: 30px;
 }
 </style>

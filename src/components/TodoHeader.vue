@@ -35,7 +35,7 @@ const todoText = ref('')
   width: 400px;
   height: 140px;
   padding: 20px;
-  box-shadow: 4px 8px 18px rgb(230, 230, 230);
+  box-shadow: 4px 8px 18px rgb(216, 216, 216);
   border-radius: 8px;
 }
 
