@@ -4,15 +4,19 @@ import type { Todo } from '@/App.vue'
 const props = defineProps<{
   todo: Todo
 }>()
+
+const emits = defineEmits<{
+  removeTodo: []
+}>()
 </script>
 
 <template>
   <div class="todo-item-box">
     <div class="todo-item-text-box">
       <input type="checkbox" />
-      <span>{{ todo.todoText }}</span>
+      <span>{{ props.todo.todoText }}</span>
     </div>
-    <button class="todo-item-remove-btn">X</button>
+    <button class="todo-item-remove-btn" @click="emits('removeTodo')">X</button>
   </div>
 </template>
 

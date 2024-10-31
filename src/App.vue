@@ -27,12 +27,16 @@ function addNewTodo(todoText: string) {
     })
   }
 }
+
+function removeTodo(idx: number) {
+  todos.value.splice(idx, 1)
+}
 </script>
 
 <template>
   <main class="main-box">
     <TodoHeader @add-todo="addNewTodo" />
-    <TodoList :todos />
+    <TodoList :todos @delete-todo="removeTodo" />
   </main>
 </template>
 

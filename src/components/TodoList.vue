@@ -2,11 +2,20 @@
 import type { Todo } from '@/App.vue'
 import TodoItem from './TodoItem.vue'
 
+const emits = defineEmits<{
+  deleteTodo: [number]
+}>()
+
 const props = defineProps<{
   todos: Todo[]
 }>()
 </script>
 
 <template>
-  <TodoItem v-for="todo of props.todos" :key="todo.id" :todo />
+  <TodoItem
+    v-for="(todo, idx) in props.todos"
+    :key="todo.id"
+    :todo
+    @remove-todo="emits('deleteTodo', idx)"
+  />
 </template>
