@@ -2,10 +2,15 @@
 import { ref } from 'vue'
 
 const emits = defineEmits<{
-  (e: 'addTodo', todoText: string): void
+  addTodo: [string]
 }>()
 
 const todoText = ref('')
+
+function addAndCleanTodoText() {
+  emits('addTodo', todoText.value)
+  todoText.value = ''
+}
 </script>
 
 <template>
@@ -19,9 +24,7 @@ const todoText = ref('')
         v-model="todoText"
         placeholder="Добавьте новую задачу!"
       />
-      <button class="header-btn-add" @click="emits('addTodo', todoText)">
-        +
-      </button>
+      <button class="header-btn-add" @click="addAndCleanTodoText">+</button>
     </div>
   </div>
 </template>
@@ -35,7 +38,7 @@ const todoText = ref('')
   width: 400px;
   height: 140px;
   padding: 20px;
-  box-shadow: 4px 8px 18px rgb(230, 230, 230);
+  box-shadow: 4px 8px 18px rgb(216, 216, 216);
   border-radius: 8px;
 }
 
