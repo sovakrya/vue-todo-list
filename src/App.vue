@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import TodoHeader from './components/TodoHeader.vue'
+import TodoList from './components/TodoList.vue'
 
 export type Todo = {
   id: number
@@ -31,6 +32,7 @@ function addNewTodo(todoText: string) {
 <template>
   <main class="main-box">
     <TodoHeader @add-todo="addNewTodo" />
+    <TodoList :todos />
   </main>
 </template>
 
