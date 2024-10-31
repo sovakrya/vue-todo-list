@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const emits = defineEmits<{
-  (e: 'addTodo', todoText: string): void
+  addTodo: [string]
 }>()
 
 const todoText = ref('')
