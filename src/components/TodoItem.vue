@@ -7,14 +7,21 @@ const props = defineProps<{
 
 const emits = defineEmits<{
   removeTodo: []
+  doneTodo: []
 }>()
 </script>
 
 <template>
-  <div class="todo-item-box">
+  <div class="todo-item-box" :class="{ 'cheked-todo-bg': props.todo.isDone }">
     <div class="todo-item-text-box">
-      <input type="checkbox" />
-      <span>{{ props.todo.todoText }}</span>
+      <input
+        type="checkbox"
+        @change="emits('doneTodo')"
+        v-if="!props.todo.isDone"
+      />
+      <span :class="{ 'cheked-todo-text': props.todo.isDone }">{{
+        props.todo.todoText
+      }}</span>
     </div>
     <button class="todo-item-remove-btn" @click="emits('removeTodo')">X</button>
   </div>
@@ -41,5 +48,12 @@ const emits = defineEmits<{
 .todo-item-remove-btn {
   font-size: 16px;
   width: 24px;
+}
+
+.cheked-todo-bg {
+  background-color: rgb(172, 172, 172);
+}
+.cheked-todo-text {
+  text-decoration: line-through;
 }
 </style>

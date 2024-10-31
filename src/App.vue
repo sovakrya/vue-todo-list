@@ -31,12 +31,16 @@ function addNewTodo(todoText: string) {
 function removeTodo(idx: number) {
   todos.value.splice(idx, 1)
 }
+
+function executeTodo(idx: number) {
+  todos.value[idx].isDone = true
+}
 </script>
 
 <template>
   <main class="main-box">
     <TodoHeader @add-todo="addNewTodo" />
-    <TodoList :todos @delete-todo="removeTodo" />
+    <TodoList :todos @delete-todo="removeTodo" @done-todo="executeTodo" />
   </main>
 </template>
 

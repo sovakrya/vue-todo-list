@@ -4,6 +4,7 @@ import TodoItem from './TodoItem.vue'
 
 const emits = defineEmits<{
   deleteTodo: [number]
+  doneTodo: [number]
 }>()
 
 const props = defineProps<{
@@ -17,5 +18,6 @@ const props = defineProps<{
     :key="todo.id"
     :todo
     @remove-todo="emits('deleteTodo', idx)"
+    @done-todo="emits('doneTodo', idx)"
   />
 </template>
